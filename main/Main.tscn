@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Pickable.gd" type="Script" id=1]
+[ext_resource path="res://textures/vegetation_fern_01-export.png" type="Texture" id=2]
+[ext_resource path="res://textures/vegetation_strawberry_03-export.png" type="Texture" id=3]
+[ext_resource path="res://GUI.gd" type="Script" id=4]
+[ext_resource path="res://Main.gd" type="Script" id=5]
+[ext_resource path="res://textures/hive.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchor_bottom = 1.0
+margin_left = 19.0
+margin_top = 34.0
+margin_right = 83.0
+margin_bottom = -39.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+
+[node name="Pickable" type="TextureButton" parent="CanvasLayer/Panel/VSplitContainer"]
+margin_right = 64.0
+margin_bottom = 59.0
+texture_normal = ExtResource( 3 )
+script = ExtResource( 1 )
+type = "flower"
+
+[node name="Pickable2" type="TextureButton" parent="CanvasLayer/Panel/VSplitContainer"]
+margin_top = 71.0
+margin_right = 64.0
+margin_bottom = 527.0
+texture_normal = ExtResource( 2 )
+script = ExtResource( 1 )
+type = "leaf"
+
+[node name="Home" type="Area2D" parent="."]
+position = Vector2( 519, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Home"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Home"]
+position = Vector2( 0, 29 )
+texture = ExtResource( 7 )
